@@ -4,7 +4,6 @@ public class Stack {
 	
 	int[] stack = new int[5];
 	int top=-1;
-	int size;
 	public static void main(String[] args) {
 		
 		Stack s = new Stack();
@@ -31,7 +30,7 @@ public class Stack {
 	
 	public void push(int i) {
 		
-		if(top+1>=5) {
+		if(isFull()==1) {
 			System.out.println("Stack full");
 			return;
 		}
@@ -40,7 +39,7 @@ public class Stack {
 	
 	public int pop()
 	{
-		if(isEmpty()!=-1)
+		if(isEmpty()!=1)
 		{
 			int poppedlement=stack[top];
 			--top;
@@ -61,8 +60,14 @@ public class Stack {
 	
 	public void peek()
 	{
-		if(isEmpty()!=-1)System.out.println(stack[top]);
+		if(isEmpty()!=1)System.out.println(stack[top]);
 		else System.out.println("Stack is empty");
+	}
+	
+	public int isFull()
+	{
+		if(top+1>=5)return 1;
+		else return 0;
 	}
 
 }
