@@ -12,7 +12,7 @@ public class Prac {
 		b = b - a;
 		System.out.println(a+"and"+b);
 		
-		System.out.println("-------------------------------------------");
+		System.out.println("-------------------1------------------------");
 		/*
 			Print below pattern
 			1 
@@ -29,7 +29,7 @@ public class Prac {
 			System.out.println();
 		}
 		
-		System.out.println("-------------------------------------------");
+		System.out.println("---------------------2----------------------");
 		/*
 		Print below pattern
 			1 
@@ -48,7 +48,7 @@ public class Prac {
 			System.out.println();
 		}
 		
-		System.out.println("-------------------------------------------");
+		System.out.println("------------------3-------------------------");
 		n=3;
 		for(int i=1 ; i<=n ; ++i)
 		{
@@ -60,7 +60,7 @@ public class Prac {
 			System.out.println();
 		}
 		
-		System.out.println("-------------------------------------------");
+		System.out.println("-------------------4------------------------");
 		k=n-1;
 		for(int i=1;i<=n;++i)
 		{
@@ -77,7 +77,7 @@ public class Prac {
 			System.out.println();
 		}
 		
-		System.out.println("-------------------------------------------");
+		System.out.println("--------------------5-----------------------");
 		for(int i=1 ; i<=n ; ++i)
 		{
 			k=i-1;
@@ -91,10 +91,32 @@ public class Prac {
 				System.out.print("*"+" ");
 			}
 			System.out.println();
-			
+		}
+		//n=4;
+		k=1;
+		System.out.println("--------------------6-----------------------");
+		for(int i=1;i<=n;++i)
+		{
+			for(int j=1;j<=i;++j)
+			{
+				if(j>1)System.out.print("*");
+				System.out.print(k);
+				++k;
+			}
+			System.out.println();
 		}
 		
-		
+		k=1;
+		System.out.println("--------------------7-----------------------");
+		for(int i=1;i<=n;++i)
+		{
+			for(int j=1;j<=n-i+1;++j)
+			{
+				if(j>1)System.out.print("*");
+				System.out.print(k++);
+			}
+			System.out.println();
+		}
 
 	}
 

@@ -1,3 +1,4 @@
+package practise.stack;
 
 
 import java.util.Scanner;

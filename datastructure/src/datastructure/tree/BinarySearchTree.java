@@ -134,11 +134,35 @@ public class BinarySearchTree extends BinaryTree{
 		}
 	}
 	
-
+	//gives count of elements greater than key
+	public int greaterCount(int key)
+	{
+		int count=0;
+		Node ptr=root;
+		boolean found=false;
+		while(!found)
+		{
+			if(key==ptr.data) {
+				count+=nodeCount(ptr.right);
+				found=true;
+			}
+			else if(key<ptr.data)
+			{
+				count+=1+nodeCount(ptr.right);
+				ptr=ptr.left;
+			}
+			else
+			{
+				ptr=ptr.right;
+			}
+		}
+		return count;
+	}
 	
 	public static void main(String[] args) {
 		BinarySearchTree b = new BinarySearchTree();
-		int key[] = {50,30,20,40,45,70,60,80};
+		//int key[] = {50,30,20,40,45,70,60,80};
+		int key[] = {8,3,1,6,7,4,10,14,13};
 		for(int k:key)b.insert(k);
 		
 		b.inorderTraversal(b.root);
@@ -153,6 +177,7 @@ public class BinarySearchTree extends BinaryTree{
 		else System.out.println("not found");
 		
 		System.out.println("Done");
+		System.out.println(b.greaterCount(1));
 		
 		
 	}
