@@ -3,12 +3,12 @@ public class BubbleSelectionInsertionSort {
 	public static void main(String[] args) {
 		
 		BubbleSelectionInsertionSort b = new BubbleSelectionInsertionSort();
-		int[] a = {3,25,10,-1,8,19,12};
+		int[] a = {3,25,10,-1,8};
 		//bubbleSort(a);
 		//b.display(a);
 		//selectionSort(a);
 		//b.display(a);
-		insertionSort(a);
+		insertionSorttry(a);
 		b.display(a);
 		
 	}
@@ -21,15 +21,27 @@ public class BubbleSelectionInsertionSort {
 			int position=i+1;
 			for(int j=i+1;j>0 && temp<a[j-1] ; --j)
 			{
-				if(temp<a[j-1])
-				{
 					a[j]=a[j-1];
 					position=j-1;
-				}
 			}
 			a[position]=temp;
 		}
 	}
+	
+public static void insertionSorttry(int[] a) {
+		
+		int i=0,j=0;
+		for(i=0;i<a.length-1;++i)
+		{
+			int temp=a[i+1];
+			for(j=i+1;j>0 && temp<a[j-1] ;--j)a[j]=a[j-1];
+			a[j]=temp;
+		}
+	}
+	
+	
+	
+	
 
 	public static void selectionSort(int[] a) {
 		

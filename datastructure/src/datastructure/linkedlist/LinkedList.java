@@ -70,7 +70,7 @@ public class LinkedList{
 		}
 	}
 	
-	public void reverse()
+	/*public void reverse()
 	{
 		Node temp=r(head);
 		temp.next=null;
@@ -98,6 +98,15 @@ public class LinkedList{
 			return temp.next;
 		}
 		
+	}*/
+	
+	public Node reverseRecursive(Node head)
+	{
+		if(head.next==null)return head;
+		Node head1=reverseRecursive(head.next);
+		head.next.next=head;
+		head.next=null;
+		return head1;
 	}
 
 	public void display() {
@@ -179,6 +188,40 @@ public class LinkedList{
 		--size;
 	}
 	
+	public void reverseRightHalf(Node head,int size)
+	{
+		size=size/2+1;
+		Node prev=null;
+		while(size>1)
+		{
+			prev=head;
+			head=head.next;
+			--size;
+		}
+		
+		prev.next=null;
+		System.out.println(prev.data);
+		System.out.println(head.data);
+		Node t =reverseIterative(head);
+		prev.next=t;
+	}
+	
+	public Node reverseIterative(Node head) {
+		if(head==null)return null;
+		Node prev=null;
+		Node next=null;
+		Node curr=head;
+		while(curr!=null)
+		{
+			next=curr.next;
+			curr.next=prev;
+			prev=curr;
+			curr=next;
+		}
+		return prev;
+		
+	}
+
 	public void kthNodeFromEnd(int position)
 	{
 		/*//Without using size of LinkedList
@@ -256,6 +299,19 @@ public class LinkedList{
 		return false;
 	}
 	
+
+	public static Node mid(Node head)
+	{
+		
+		Node t1=head;
+		Node t2=head;
+		while(t1!=null && t1.next!=null)
+		{
+			t2=t2.next;
+			t1=t1.next.next;
+		}
+		return t2;
+	}
 	
 	public void getMid()
 	{
@@ -298,6 +354,7 @@ public class LinkedList{
 		l.insertAtPosition(2, -1);
 		l.insertAtPosition(4, 99);
 		l.insertAtEnd(20);
+		
 		//l.insertAtPosition(6, 87);
 		l.display();
 		//l.deleteAtEnd();
@@ -307,11 +364,19 @@ public class LinkedList{
 		//l.deleteAtpostion(2);
 		//l.display();
 		System.out.println(l.size);
-		l.kthNodeFromEnd(5);
-		l.reverse();
+		//l.kthNodeFromEnd(5);
+		//l.reverse();
 		//l.hasCycle();
 		//l.getMid();
+		//Node t = mid(l.head);
+		//System.out.println(t.data);
+		//l.reverseRightHalf(l.head, l.size);
+		//l.display();
+		//l.head=l.reverseIterative(l.head);
+		//l.display();
 	}
+
+	
 
 	
 }

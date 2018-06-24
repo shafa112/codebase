@@ -10,7 +10,8 @@ import java.util.Queue;
 public class BinaryTree {
 	
 	Node root;
-	
+	Node root2;  //this is created just for isSubtree function
+	int min=Integer.MAX_VALUE;
 	public Node mirror(Node root)
 	{
 		if(root==null)return null;
@@ -45,7 +46,7 @@ public class BinaryTree {
 		return 1+lcount+rcount;
 	}
 	
-	public Node search(Node root,int key) {
+	public  Node search(Node root,int key) {
 			if(root==null)return null;
 			if(root.data==key)return root;
 			Node lsearch=search(root.left, key);
@@ -254,6 +255,44 @@ public class BinaryTree {
 		
 	}
 
+	public void minCostPath(Node root,int sum)
+	{
+		if(root==null)return;
+		if(root.left==null && root.right==null && min>root.data+sum) min=root.data+sum;
+		minCostPath(root.left, sum+root.data);
+		minCostPath(root.right, sum+root.data);
+	}
+	
+	public  boolean isSubtree(Node t, Node s) 
+    {
+		if(t==null && s==null)return true;
+	      if(t==null && s!=null)return false;
+	      if(t!=null && s==null)return false;
+	  t=search(t, s.data);
+	  if(t!=null) return isSub(t,s);
+	  return false;
+    }
+	
+	public  boolean isSub(Node t, Node s) {
+		if(t==null && s==null)return true;
+	      if(t==null && s!=null)return false;
+	      if(t!=null && s==null)return false;
+	      if(t.data!=s.data)return false;
+	      boolean x = isSubtree(t.left,s.left);
+	      boolean y = isSubtree(t.right,s.right);
+	      return x && y;
+	}
+
+	public void leftView(Node root,int level,int[] count)
+	{
+		if(root==null)return;
+		count[level]++;
+		if(count[level]==1)System.out.println(root.data);
+		leftView(root.left, level+1, count);
+		leftView(root.right, level+1, count);
+		
+	}
+	
 	private void buildTree() {
 		/*root = new Node(20);
 		Node lnode = new Node(28);
@@ -275,8 +314,8 @@ public class BinaryTree {
 		root.right = new Node(3);
 		root.left.left = new Node(4);
 		root.right.right = new Node(5);
-		root.left.left.left = new Node(41);
-		root.left.right = new Node(7);
+		//root.left.left.left = new Node(41);
+		root.left.right = new Node(10);
 		root.right.right.left = new Node(51);
 		
 	}
@@ -289,6 +328,22 @@ public class BinaryTree {
 		System.out.println(b.isPathSumExist(b.root, 3));
 
 		System.out.println(b.getLowestAncestor(b.root, 2, 5));
+		
+		System.out.println("------------------------");
+		
+		b.root2=new Node(2);
+		b.root2.left= new Node(4);
+		b.root2.right= new Node(7);
+		b.root2.left.left= new Node(91);
+		System.out.println(b.isSubtree(b.root, b.root2));
+		
+		System.out.println("===================mincost========");
+		//ArrayList<Integer> count = new ArrayList<>();
+		b.minCostPath(b.root, 0);
+		System.out.println(b.min);
+		System.out.println("gg");
+		//b.width(b.root);
+		
 	}
 	
 
